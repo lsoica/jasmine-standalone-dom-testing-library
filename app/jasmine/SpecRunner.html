@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .jasmine_html-reporter {
+            width: 40%;
+            height: 100%;
+        }
+        .the-frame {
+            width: 60%;
+            float: right;
+            height: 100%;
+        }
+        html {
+            height: 100%;
+          }
+          body {
+            height: 100%;
+          }
+          
+    </style>
+
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v3.4.0</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-3.4.0/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-3.4.0/jasmine.css">
+
+  <script src="lib/jasmine-3.4.0/jasmine.js"></script>
+  <script src="lib/jasmine-3.4.0/jasmine-html.js"></script>
+  <script src="lib/jasmine-3.4.0/boot.js"></script>
+
+  <!-- include spec files here... -->
+  <script src="dist/bundle.js"></script>
+
+</head>
+
+<body>
+    <div class="the-frame" id="the-frame">
+        <iframe src="http://localhost:8080/" class="frame" id="test-frame" width="100%" height="100%"></iframe>
+    </div>
+</body>
+</html>

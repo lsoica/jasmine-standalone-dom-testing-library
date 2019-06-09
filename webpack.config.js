@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const webpack_rules = [];
 const webpackOption = {
-    entry: ["babel-polyfill", "./app/jasmine/spec/PlayerSpec.js"],
+    entry: ["babel-polyfill", "./app/jasmine/spec/DemoSpec.js"],
     output: {
         path: path.resolve(__dirname, "./app/jasmine/dist/"),
         filename: "bundle.js",

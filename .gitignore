@@ -7,3 +7,4 @@ cypress/fixtures/profile.json
 cypress/fixtures/users.json
 .history
 .vscode
+node

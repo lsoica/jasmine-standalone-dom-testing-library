@@ -8,3 +8,4 @@ cypress/fixtures/users.json
 .history
 .vscode
 node
+/app/jasmine/dist

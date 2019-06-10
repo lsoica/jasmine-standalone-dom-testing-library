@@ -13,9 +13,10 @@ import {
         return new Promise(async (resolve, reject) => {
             try {
                 await wait(() => expect(document).not.toBeNull());
-                await wait(() => expect(document.getElementsByClassName("frame")[0]).not.toBeNull());
+                await wait(() => expect(document.getElementsByClassName("frame")).not.toBeNull());
 
                 this.iframe = document.getElementsByClassName("frame")[0];
+                await wait(() => expect(this.iframe.contentWindow.document.body).not.toBeNull());
                 let container = this.iframe.contentWindow.document.body;
 
                 await wait(() => expect(container.getElementsByClassName('nav navbar-nav')[0]).not.toBeNull());

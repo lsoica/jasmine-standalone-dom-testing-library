@@ -1,8 +1,13 @@
 const path = require("path");
 const webpack = require("webpack");
+var glob = require("glob");
+
 const webpack_rules = [];
 const webpackOption = {
-    entry: ["babel-polyfill", "./app/jasmine/spec/DemoSpec.js"],
+    // include all spec files from app/jasmine/spec
+    // https://stackoverflow.com/questions/32874025/how-to-add-wildcard-mapping-in-entry-of-webpack/34545812#34545812
+
+    entry: ["babel-polyfill", ...glob.sync("./app/jasmine/spec/*[Sspec].js")],
     output: {
         path: path.resolve(__dirname, "./app/jasmine/dist/"),
         filename: "bundle.js",

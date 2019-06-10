@@ -10,11 +10,25 @@ import {
   
   export class HomePageOject {
     constructor() {
-        wait(() => expect(document).not.toBeNull()).then(() => {
-            let iframe = document.getElementsByClassName("frame")[0];
-            let container = iframe.contentWindow.document.body;
-        
-            this.navBar = container.getElementsByClassName('nav navbar-nav')[0];
+        return new Promise(async (resolve, reject) => {
+            try {
+                await wait(() => expect(document).not.toBeNull());
+                await wait(() => expect(document.getElementsByClassName("frame")[0]).not.toBeNull());
+
+                this.iframe = document.getElementsByClassName("frame")[0];
+                let container = this.iframe.contentWindow.document.body;
+
+                await wait(() => expect(container.getElementsByClassName('nav navbar-nav')[0]).not.toBeNull());
+
+                this.navBar = container.getElementsByClassName('nav navbar-nav')[0];
+
+                this.utilities = await waitForElement(() => getByText(this.navBar, "Utilities"))
+                this.cypressAPI = await waitForElement(() => getByText(this.navBar, "Cypress API"))
+                this.commands = await waitForElement(() => getByRole(this.navBar, "button"))
+            } catch (ex) {
+                return reject(ex);
+            }
+            resolve(this);
         });
     }
 
@@ -22,22 +36,15 @@ import {
         return this.navBar;
     }
 
-    async getUtilities() {
-        await wait(() => expect(this.navBar).not.toBeNull());
-        this.utilities = await waitForElement(() => getByText(this.navBar, "Utilities"))
+    getUtilities() {
         return this.utilities;
     }
 
-    async getCypressApi() {
-        await wait(() => expect(this.navBar).not.toBeNull());
-        this.cypressAPI = await waitForElement(() => getByText(this.navBar, "Cypress API"))
-
+    getCypressApi() {
         return this.cypressAPI;
     }
 
-    async getCommands() {
-        await wait(() => expect(this.navBar).not.toBeNull());
-        this.commands = await waitForElement(() => getByRole(this.navBar, "button"))
+    getCommands() {
         return this.commands;
     }
 }

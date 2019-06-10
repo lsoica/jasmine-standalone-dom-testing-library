@@ -12,7 +12,7 @@ describe("DemoSpec", function () {
   });
 
   it("should have navigation bar", async () => {
-    const hpo = new HomePageOject();
+    const hpo = await new HomePageOject();
     const navBar = hpo.getNavBar();
 
     expect(navBar).not.toBeNull();
@@ -20,25 +20,22 @@ describe("DemoSpec", function () {
   });
 
   it("should have utilities", async () => {
-    const hpo = new HomePageOject();
-    const utilities = await hpo.getUtilities();
-    expect(utilities).not.toBeNull();
-    utilities.click();
+    const hpo = await new HomePageOject();
+    expect(hpo.getUtilities()).not.toBeNull();
+    hpo.getUtilities().click();
   });
 
   it("should have cypress api", async () => {
-    const hpo = new HomePageOject();
+    const hpo = await new HomePageOject();
 
-    const cypressAPI = await hpo.getCypressApi();
-    expect(cypressAPI).not.toBeNull();
-    cypressAPI.click()
+    expect(hpo.getCypressApi()).not.toBeNull();
+    hpo.getCypressApi().click()
   });
 
   it("should have commands", async () => {
-    const hpo = new HomePageOject();
+    const hpo = await new HomePageOject();
 
-    const commands = await hpo.getCommands();
-    expect(commands).not.toBeNull();
-    commands.click()
+    expect(hpo.getCommands()).not.toBeNull();
+    hpo.getCommands().click()
   });
 });
